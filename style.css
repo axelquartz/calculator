@@ -1,3 +1,45 @@
 body{
-    background-color: #333333;;
+    background-color: #1f1f1f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#container{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 700px;
+    background-color: #474646;
+    border-radius: 30px;
+    padding: 50px 20px;
+    border: solid 3px black;
+}
+#container-display{
+    display: flex;
+    height: 200px;
+    width: 400px;
+    padding: 50px;
+    margin: 10px 0;
+    align-self: center;
+    background-color: #c2c2c2;
+    border-radius: 30px;
+    border: solid 3px black;
+}
+#container-keyboard{
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: 50px;
+}
+#container-keyboard>button{
+    text-align: center;
+    border-radius: 30px;
+    width: 105px;
+    height: 105px;
+    margin: 8px;
+    background-color: rgb(32, 32, 32);
+    font-size: 42px;
+    font-weight: bold;
+    border: solid 3px rgb(0, 0, 0);
+    color: #ffffff;
 }
