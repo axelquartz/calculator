@@ -1,5 +1,7 @@
 // Container Display
 let containerDisplay = document.querySelector('#container-display');
+containerDisplay.style.fontSize = '32px'
+
 let displayArray = []
 let calculateArray = []
 let numberArray = []
@@ -10,7 +12,6 @@ containerDisplay.innerHTML = displayArray;
 // Key1
 let key1 = document.querySelector('#key1');
 key1.addEventListener('click', press1 = function(){
-
     if(calculateArray == ''){
         displayArray.push(1)
         containerDisplay.innerHTML = displayArray.join('');
@@ -113,6 +114,7 @@ key9.addEventListener('click', press9 = function(){
     }else{
         numberArray.push(9)
         containerDisplay.innerHTML = numberArray.join('');
+        
     }
 })
 
@@ -131,19 +133,21 @@ key0.addEventListener('click', press0 = function(){
 // Key "+"
 let keyAdd = document.querySelector('#key-add');
 keyAdd.addEventListener('click', function pressAdd(){
+  
      displayArray = displayArray.join('')
      displayArray = Number(displayArray)
      calculateArray.push(displayArray)
-     keyAdd.classList.add('isClicked')
+     keyAdd.classList.add('addIsClicked')
+    
 })
 
-// Key "/"
-let keySubtract = document.querySelector('#key-subtract');
-keySubtract.addEventListener('click', function pressSubtract(){
+// Key "-"
+let keySub = document.querySelector('#key-sub');
+keySub.addEventListener('click', function pressSub(){
     displayArray = displayArray.join('')
     displayArray = Number(displayArray)
     calculateArray.push(displayArray)
-    keySubtract.classList.add('isClicked')
+    keySub.classList.add('subIsClicked')
 })
 
 // Key "X"
@@ -152,7 +156,7 @@ keyMultiply.addEventListener('click', function pressMultiply(){
     displayArray = displayArray.join('')
     displayArray = Number(displayArray)
     calculateArray.push(displayArray)
-    keyMultiply.classList.add('isClicked')
+    keyMultiply.classList.add('multiplyIsClicked')
 })
 
 // Key "/"
@@ -161,26 +165,35 @@ keyDivide.addEventListener('click', function pressDivide(){
     displayArray = displayArray.join('')
     displayArray = Number(displayArray)
     calculateArray.push(displayArray)
-    keyDivide.classList.add('isClicked')
+    keyDivide.classList.add('divideIsClicked')
 })
 
 // Key "="
 let keyEqual = document.querySelector('#key-equal');
 keyEqual.addEventListener('click', function pressEqual(){
+    keyEqual.classList.add('equalIsClicked')
     numberArray = numberArray.join('')
     numberArray = Number(numberArray)
     calculateArray = Number(calculateArray)
 
-    if (keyDivide.classList.contains('isClicked')){ // Check if Divide Key was pressed in order to divide the 2 values
-        containerDisplay.innerHTML = calculateArray / numberArray;
+    // Check wich operator key was pressed
 
-    } else if(keyMultiply.classList.contains('isClicked')){ // Check if Multiply Key was pressed in order to multiply the 2 values
-        containerDisplay.innerHTML = calculateArray * numberArray;
+    if (keyDivide.classList.contains('divideIsClicked')){ // Check if Divide Key was pressed in order to divide the 2 values
+        calculateArray = containerDisplay.innerHTML = calculateArray / numberArray;
+        numberArray = []
 
-    } else if(keyAdd.classList.contains('isClicked')){ // Check if Add Key was pressed in order to sum the 2 values
-        containerDisplay.innerHTML = calculateArray + numberArray;
-    } else if(keySubtract.classList.contains('isClicked')){ // Check if Subtract Key was pressed in order to subtract the 2 values
-        containerDisplay.innerHTML = calculateArray - numberArray;
+    } else if(keyMultiply.classList.contains('multiplyIsClicked')){ // Check if Multiply Key was pressed in order to multiply the 2 values
+        calculateArray = containerDisplay.innerHTML = calculateArray * numberArray;
+        numberArray = []
+
+    } else if(keyAdd.classList.contains('addIsClicked')){ // Check if Add Key was pressed in order to sum the 2 values
+        calculateArray = containerDisplay.innerHTML = calculateArray + numberArray;
+        numberArray = []
+
+    } else if(keySub.classList.contains('subIsClicked')){ // Check if Multiply Key was pressed in order to multiply the 2 values
+        calculateArray = containerDisplay.innerHTML = calculateArray - numberArray;
+        numberArray = []
+
     }
 })
 
