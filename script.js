@@ -9,6 +9,15 @@ containerDisplay.innerHTML = displayArray;
 
 // Event listener for each number of the calculator
 
+// Clear Key
+let clearKey = document.querySelector('#container-clear');
+clearKey.addEventListener('click', clearValues = function(){
+    calculateArray = [];
+    numberArray = [];
+    displayArray = [];
+    containerDisplay.innerHTML = displayArray;
+})
+
 // Key1
 let key1 = document.querySelector('#key1');
 key1.addEventListener('click', press1 = function(){
@@ -134,12 +143,42 @@ key0.addEventListener('click', press0 = function(){
 let keyAdd = document.querySelector('#key-add');
 keyAdd.addEventListener('click', function pressAdd(){
      keyAdd.classList.add('addIsClicked')
-if (keyAdd.classList.contains('addIsClicked')){
+if (keyAdd.classList.contains('addIsClicked') && (numberArray.length == 0)){
      displayArray = displayArray.join('')
      displayArray = Number(displayArray)
      calculateArray.push(displayArray)
      keyAdd.classList.add('addIsClicked')
-}else{
+
+}else if(keyAdd.classList.contains('addIsClicked') && numberArray.length > 0){
+        keyEqual.classList.add('equalIsClicked')
+        numberArray = numberArray.join('')
+        numberArray = Number(numberArray)
+        calculateArray = Number(calculateArray)
+    
+        // Check wich operator key was pressed
+        
+        if (keyDivide.classList.contains('divideIsClicked')){ // Check if Divide Key was pressed in order to divide the 2 values
+            calculateArray = containerDisplay.innerHTML = calculateArray / numberArray;
+            numberArray = []
+            keyDivide.classList.remove('divideIsClicked')
+    
+        } else if(keyMultiply.classList.contains('multiplyIsClicked')){ // Check if Multiply Key was pressed in order to multiply the 2 values
+            calculateArray = containerDisplay.innerHTML = calculateArray * numberArray;
+            numberArray = []
+            keyMultiply.classList.remove('multiplyIsClicked')
+    
+        } else if(keyAdd.classList.contains('addIsClicked')){ // Check if Add Key was pressed in order to sum the 2 values
+            calculateArray = containerDisplay.innerHTML = calculateArray + numberArray;
+            numberArray = []
+            keyAdd.classList.remove('addIsClicked')
+    
+        } else if(keySub.classList.contains('subIsClicked')){ // Check if Multiply Key was pressed in order to multiply the 2 values
+            calculateArray = containerDisplay.innerHTML = calculateArray - numberArray;
+            numberArray = []
+            keySub.classList.remove('subIsClicked')
+    
+        }
+    }else{
     displayArray = displayArray.join('')
      displayArray = Number(displayArray)
      calculateArray.push(displayArray)
@@ -205,7 +244,7 @@ keyEqual.addEventListener('click', function pressEqual(){
     calculateArray = Number(calculateArray)
 
     // Check wich operator key was pressed
-
+    
     if (keyDivide.classList.contains('divideIsClicked')){ // Check if Divide Key was pressed in order to divide the 2 values
         calculateArray = containerDisplay.innerHTML = calculateArray / numberArray;
         numberArray = []
@@ -258,3 +297,4 @@ keyEqual.addEventListener('click', function pressEqual(){
 
 
 // operate([0], 3,5)
+
