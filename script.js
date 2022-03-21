@@ -133,39 +133,67 @@ key0.addEventListener('click', press0 = function(){
 // Key "+"
 let keyAdd = document.querySelector('#key-add');
 keyAdd.addEventListener('click', function pressAdd(){
-  
+     keyAdd.classList.add('addIsClicked')
+if (keyAdd.classList.contains('addIsClicked')){
      displayArray = displayArray.join('')
      displayArray = Number(displayArray)
      calculateArray.push(displayArray)
      keyAdd.classList.add('addIsClicked')
-    
+}else{
+    displayArray = displayArray.join('')
+     displayArray = Number(displayArray)
+     calculateArray.push(displayArray)
+     keyAdd.classList.add('addIsClicked')
+}
 })
 
 // Key "-"
 let keySub = document.querySelector('#key-sub');
 keySub.addEventListener('click', function pressSub(){
+    keySub.classList.add('subIsClicked')
+if(keySub.classList.contains('subIsClicked')){
     displayArray = displayArray.join('')
     displayArray = Number(displayArray)
     calculateArray.push(displayArray)
     keySub.classList.add('subIsClicked')
+    }else{
+    displayArray = displayArray.join('')
+    displayArray = Number(displayArray)
+    calculateArray.push(displayArray)
+    keySub.classList.add('subIsClicked')
+    }
 })
 
 // Key "X"
 let keyMultiply = document.querySelector('#key-multiply');
 keyMultiply.addEventListener('click', function pressMultiply(){
+    keyMultiply.classList.add('multiplyIsClicked')
+    if(keyMultiply.classList.contains('multiplyIsClicked')){
     displayArray = displayArray.join('')
     displayArray = Number(displayArray)
     calculateArray.push(displayArray)
     keyMultiply.classList.add('multiplyIsClicked')
+    }else{
+    displayArray = displayArray.join('')
+    displayArray = Number(displayArray)
+    calculateArray.push(displayArray)
+    keyMultiply.classList.add('multiplyIsClicked')    
+    }
 })
 
 // Key "/"
 let keyDivide = document.querySelector('#key-divide');
 keyDivide.addEventListener('click', function pressDivide(){
+    keyDivide.classList.add('divideIsClicked')
+    if(keyDivide.classList.contains('divideIsClicked')){
     displayArray = displayArray.join('')
     displayArray = Number(displayArray)
     calculateArray.push(displayArray)
-    keyDivide.classList.add('divideIsClicked')
+    }else{
+    displayArray = displayArray.join('')
+    displayArray = Number(displayArray)
+    calculateArray.push(displayArray)    
+    }
 })
 
 // Key "="
@@ -181,18 +209,22 @@ keyEqual.addEventListener('click', function pressEqual(){
     if (keyDivide.classList.contains('divideIsClicked')){ // Check if Divide Key was pressed in order to divide the 2 values
         calculateArray = containerDisplay.innerHTML = calculateArray / numberArray;
         numberArray = []
+        keyDivide.classList.remove('divideIsClicked')
 
     } else if(keyMultiply.classList.contains('multiplyIsClicked')){ // Check if Multiply Key was pressed in order to multiply the 2 values
         calculateArray = containerDisplay.innerHTML = calculateArray * numberArray;
         numberArray = []
+        keyMultiply.classList.remove('multiplyIsClicked')
 
     } else if(keyAdd.classList.contains('addIsClicked')){ // Check if Add Key was pressed in order to sum the 2 values
         calculateArray = containerDisplay.innerHTML = calculateArray + numberArray;
         numberArray = []
+        keyAdd.classList.remove('addIsClicked')
 
     } else if(keySub.classList.contains('subIsClicked')){ // Check if Multiply Key was pressed in order to multiply the 2 values
         calculateArray = containerDisplay.innerHTML = calculateArray - numberArray;
         numberArray = []
+        keySub.classList.remove('subIsClicked')
 
     }
 })
