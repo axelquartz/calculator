@@ -44,6 +44,9 @@ p{
     font-size: 36px;
     font-weight: bold;
 }
+#container-clear:hover{
+    background-color: #ee6a36;
+}
 #container-keyboard{
     display: flex;
     flex-wrap: wrap;
@@ -68,4 +71,10 @@ p{
 }
 #key-equal{
     background-color: orangered;
+}
+#container-keyboard>button:hover{
+    background-color: #3215d4;
+}
+#container-keyboard>button:active{
+    background-color: #4e30f8;
 }
